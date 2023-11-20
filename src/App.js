@@ -10,6 +10,7 @@ function App() {
           </div>
           <form className = 'form1'>
             <input 
+              id ='email'
               className='username' 
               placeholder='Username'
               type = 'email'
