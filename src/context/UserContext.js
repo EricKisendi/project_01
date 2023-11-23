@@ -4,7 +4,7 @@ import axios from 'axios';
 export const UserContext = createContext();
 
 export const Axios = axios.create({
-  baseURL: 'http://localhost:81/php-auth-api/'
+  baseURL: 'http://localhost:81/project_01/login_api/',
 });
 
 export const UserContextProvider = ({ children }) => {
