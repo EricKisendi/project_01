@@ -1,32 +1,28 @@
-import './App.css';
+import {useContext} from 'react'
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {UserContext} from './context/UserContext';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './components/Home';
 
 function App() {
+
+  const {user} = useContext(UserContext); 
+ 
   return (
-    <div className='body'>
-        <div className="App">
-          <div className = 'header'>
-            <h2 className='head1'>Login</h2>
-            <p className='para1'>Enter your credentials</p>
-          </div>
-          <form className = 'form1'>
-            <input 
-              id ='email'
-              className='username' 
-              placeholder='Username'
-              type = 'email'
-              spellcheck = 'false'
-              autocomplete = 'off'
-            />
-            <input 
-              className='password' 
-              placeholder='Password'
-              id = 'password'
-              type='password'
-              spellcheck = 'false'
-            />
-            <button>LOGIN</button>
-          </form>
-        </div>
+    <div className="container">
+        <BrowserRouter>
+          <Routes>
+            { user && <Route path="/" element={<Home/>} /> }
+            {!user && (
+              <>
+              <Route path="/login" element={<Login/>} />
+              <Route path="/signup" element={<Register/>} />
+              </>
+            )}
+            <Route path="*" element={<Navigate to={user ? '/':'/login'} />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
