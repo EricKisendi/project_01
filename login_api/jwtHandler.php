@@ -13,7 +13,7 @@ function encodeToken($data)
 {
     global $tokenSecret;
     $token = array(
-        'iss' => 'http://localhost:81/project_01/login_api/',
+        'iss' => 'http://localhost:81/login_api/',
         'iat' => time(),
         'exp' => time() + 3600, // 1hr
         'data' => $data
